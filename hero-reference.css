@@ -629,3 +629,56 @@
     opacity: 0 !important;
   }
 }
+
+/* =========================================================
+   iPhone / Safari — fallback de composição no mobile
+
+   Evita blocos pretos ocasionais gerados pelo compositor do
+   WebKit quando position:fixed, backdrop-filter, filtros blur e
+   SVGs filtrados se sobrepõem no topo do hero.
+   O visual principal continua vindo dos gradientes do próprio hero.
+   ========================================================= */
+@media (max-width: 1080px) {
+  /* A textura com feTurbulence é dispensável no mobile e pode virar
+     um tile preto no WebKit. */
+  .hero::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+    opacity: 0 !important;
+  }
+
+  /* Remove superfícies de blur/composição do cabeçalho fixo no Safari.
+     Mantém um fundo sólido somente quando o header estiver rolado. */
+  .nav-shell,
+  .site-header.scrolled .nav-shell {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    filter: none !important;
+  }
+
+  .site-header.scrolled .nav-shell {
+    background: rgba(8, 17, 39, .96) !important;
+  }
+
+  /* Esses elementos são decorativos e já não fazem parte da versão
+     mobile. Forçar a remoção evita que o WebKit crie camadas ocultas. */
+  .dental-seal,
+  .hero-line-art,
+  .hero-side-message,
+  .hero-right-signature,
+  .hero-info-card,
+  .hero-bottom {
+    display: none !important;
+    visibility: hidden !important;
+  }
+
+  /* Os glows usam filter: blur() em elementos parcialmente fora da tela.
+     No iOS isso também pode gerar retângulos pretos de composição. */
+  .hero-glow {
+    display: none !important;
+    filter: none !important;
+    -webkit-filter: none !important;
+  }
+}
