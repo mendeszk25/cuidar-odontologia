@@ -612,3 +612,20 @@
   .frame-caption { display:none; }
   .hero-bottom { display:none; }
 }
+
+/* =========================================================
+   Mobile Safari fix — evita artefato preto do SVG de ruído
+   O pseudo-elemento .hero::after usa feTurbulence como textura.
+   Em alguns iPhones/Safari ele pode ser rasterizado como um bloco
+   preto no canto superior esquerdo. No mobile a textura é removida,
+   preservando integralmente o gradiente e o conteúdo do hero.
+   ========================================================= */
+@media (max-width: 1080px) {
+  .hero::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    background-image: none !important;
+    opacity: 0 !important;
+  }
+}
