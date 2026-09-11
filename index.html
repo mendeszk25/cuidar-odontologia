@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="hero-reference.css">
   <script src="clinic.config.js"></script>
   <script src="script.js" defer></script>
+  <script src="ghost-fibers.js" defer></script>
+  <script src="split-text.js" defer></script>
   <script type="application/ld+json" id="schema-json"></script>
 </head>
 <body>
@@ -76,6 +78,7 @@
 
   <main id="conteudo">
     <section class="hero" id="inicio">
+      <div class="ghost-fibers-bg" aria-hidden="true"></div>
       <div class="hero-glow hero-glow-a"></div>
       <div class="hero-glow hero-glow-b"></div>
 
@@ -114,7 +117,7 @@
             <span class="eyebrow-dot"></span>
             Odontologia integrada • Gravatá/PE
           </div>
-          <h1><span class="hero-sans">Cuidado que<br>você sente.</span><em>Resultado que<br>você percebe.</em></h1>
+          <h1 class="split-text" data-split-delay="70" data-split-duration="1.05"><span class="hero-sans">Cuidado que<br>você sente.</span><em>Resultado que<br>você percebe.</em></h1>
           <p class="hero-lead">Tratamentos odontológicos personalizados, atendimento humano e uma experiência pensada para você se sentir seguro em cada etapa.</p>
           <div class="hero-actions">
             <a class="btn btn-primary js-whatsapp" href="#" data-message="Olá! Vim pelo site da Cuidar e gostaria de agendar uma avaliação.">
@@ -181,7 +184,7 @@
       <div class="section-head reveal">
         <div>
           <span class="section-kicker">Tratamentos</span>
-          <h2>Cuidados para cada <em>sorriso.</em></h2>
+          <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Cuidados para cada <em>sorriso.</em></h2>
         </div>
         <p>Da prevenção aos tratamentos mais completos, a Cuidar reúne diferentes especialidades para acompanhar cada fase do seu cuidado.</p>
       </div>
@@ -244,7 +247,7 @@
       </div>
       <div class="about-copy reveal">
         <span class="section-kicker">Sobre a Cuidar</span>
-        <h2>Odontologia feita com <em>atenção aos detalhes.</em></h2>
+        <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Odontologia feita com <em>atenção aos detalhes.</em></h2>
         <p class="lead">A proposta da Cuidar é unir diferentes áreas da odontologia em uma experiência de atendimento próxima, clara e cuidadosa.</p>
         <p>Do primeiro contato ao acompanhamento, a Cuidar busca oferecer uma experiência acolhedora, com comunicação clara, atenção aos detalhes e cuidado próximo em cada etapa.</p>
         <div class="signature-block">
@@ -259,7 +262,7 @@
       <div class="principles-shell">
         <div class="principles-title reveal">
           <span class="section-kicker light">Nossa forma de cuidar</span>
-          <h2>Ciência, clareza e <em>presença.</em></h2>
+          <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Ciência, clareza e <em>presença.</em></h2>
         </div>
         <div class="principles-grid">
           <article class="reveal">
@@ -285,7 +288,7 @@
       <div class="section-head reveal">
         <div>
           <span class="section-kicker">Equipe</span>
-          <h2>Especialistas que <em>cuidam de você.</em></h2>
+          <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Especialistas que <em>cuidam de você.</em></h2>
         </div>
         <p>Uma equipe comprometida com atendimento próximo, planejamento individualizado e cuidado em cada etapa.</p>
       </div>
@@ -335,7 +338,7 @@
       <div class="environment-shell">
         <div class="environment-copy reveal">
           <span class="section-kicker">Cuidar • Espaço</span>
-          <h2>Um ambiente pensado em <em>cuidar de você.</em></h2>
+          <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Um ambiente pensado em <em>cuidar de você.</em></h2>
           <p>Cada detalhe da Cuidar foi pensado para proporcionar uma experiência acolhedora, confortável e tranquila desde o primeiro momento.</p>
 
           <div class="environment-notes" aria-label="Características do espaço da Cuidar">
@@ -400,7 +403,7 @@
     <section class="care-differentials" id="diferenciais">
       <div class="results-copy reveal">
         <span class="section-kicker light">Por que escolher a Cuidar</span>
-        <h2>Tecnologia, cuidado e <em>planejamento.</em></h2>
+        <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Tecnologia, cuidado e <em>planejamento.</em></h2>
         <p>Uma experiência de atendimento construída com escuta, clareza e atenção individual, do primeiro contato ao acompanhamento.</p>
         <div class="care-note">Cuidado próximo em todas as etapas.</div>
       </div>
@@ -431,7 +434,7 @@
     <section class="cta-section">
       <div class="cta-inner reveal">
         <span class="section-kicker light">Agendamento</span>
-        <h2>Seu próximo sorriso<br><em>começa aqui.</em></h2>
+        <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Seu próximo sorriso<br><em>começa aqui.</em></h2>
         <p>Fale com a equipe da Cuidar pelo WhatsApp e consulte os horários disponíveis para avaliação.</p>
         <a class="btn btn-light js-whatsapp" href="#" data-message="Olá! Vim pelo site da Cuidar e gostaria de consultar horários para uma avaliação.">
           Agendar pelo WhatsApp
@@ -443,7 +446,7 @@
     <section class="section faq" id="faq">
       <div class="faq-head reveal">
         <span class="section-kicker">Dúvidas frequentes</span>
-        <h2>Antes de vir,<br><em>você pode querer saber.</em></h2>
+        <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Antes de vir,<br><em>você pode querer saber.</em></h2>
       </div>
       <div class="faq-list">
         <details class="reveal">
@@ -468,7 +471,7 @@
     <section class="contact" id="contato">
       <div class="contact-panel reveal">
         <span class="section-kicker light">Contato</span>
-        <h2>Estamos esperando <em>por você.</em></h2>
+        <h2 class="split-text" data-split-delay="55" data-split-duration="0.9">Estamos esperando <em>por você.</em></h2>
 
         <div class="contact-data">
           <div>

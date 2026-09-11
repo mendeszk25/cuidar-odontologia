@@ -9,7 +9,9 @@
   --blue-2:#24498e;
   --electric:#365fd2;
   --aqua:#52c9bd;
-  --paper:#f5f7fb;
+  --paper:#F2F0E6;
+  --paper-soft:#F7F5EE;
+  --paper-muted:#ECE9DE;
   --white:#fff;
   --line:rgba(16,23,42,.12);
   --line-dark:rgba(255,255,255,.14);
@@ -124,7 +126,7 @@ em{font-family:var(--serif);font-weight:400}
 .hero-bottom .cro{margin-left:auto}
 .hero-glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none}.hero-glow-a{width:300px;height:300px;background:#24498e;right:-120px;bottom:-120px;opacity:.35}.hero-glow-b{width:190px;height:190px;background:#52c9bd;left:-100px;top:34%;opacity:.12}
 
-.trust-strip{height:70px;background:white;border-bottom:1px solid var(--line);overflow:hidden;display:flex;align-items:center}
+.trust-strip{height:70px;background:var(--paper);border-bottom:1px solid var(--line);overflow:hidden;display:flex;align-items:center}
 .trust-track{display:flex;align-items:center;gap:38px;white-space:nowrap;min-width:max-content;animation:marquee 28s linear infinite;font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#6a7284}
 .trust-track i{width:5px;height:5px;background:var(--aqua);border-radius:50%}
 @keyframes marquee{to{transform:translateX(-50%)}}
@@ -136,7 +138,7 @@ em{font-family:var(--serif);font-weight:400}
 .section h2,.principles h2,.care-differentials h2,.cta-section h2,.contact h2,.faq h2{font-size:clamp(46px,5.7vw,82px);line-height:.97;letter-spacing:-.055em;margin:0}
 .section-head p{color:var(--ink-2);line-height:1.8;max-width:520px;margin:0}
 
-.treatments{background:#f7f8fb}
+.treatments{background:var(--paper-soft)}
 .treatment-list{width:min(1380px,100%);margin:auto;border-top:1px solid var(--line)}
 .treatment-card{display:grid;grid-template-columns:70px 1fr 60px;gap:24px;align-items:center;min-height:150px;border-bottom:1px solid var(--line);transition:.35s ease;position:relative;overflow:hidden}
 .treatment-card:before{content:'';position:absolute;inset:0;background:var(--navy);transform:translateY(101%);transition:.35s ease;z-index:0}
@@ -148,7 +150,7 @@ em{font-family:var(--serif);font-weight:400}
 .treatment-main p{margin:0;color:var(--ink-2);font-size:14px}.treatment-card:hover p{color:rgba(255,255,255,.6)}
 .treatment-arrow{font-size:25px;justify-self:end;transition:.25s}.treatment-card:hover .treatment-arrow{transform:translate(4px,-4px)}
 
-.about{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;background:white}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:8vw;align-items:center;background:var(--paper)}
 .about-image{
   position:relative;
   display:grid;
@@ -185,7 +187,7 @@ em{font-family:var(--serif);font-weight:400}
 .principles-grid h3{font-size:34px;margin:34px 0 12px}
 .principles-grid p{max-width:290px;font-size:13px;line-height:1.7;color:rgba(255,255,255,.54)}
 
-.team{background:#eef2f8}
+.team{background:var(--paper-muted)}
 .team-grid{width:min(1380px,100%);margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:26px}
 .team-card{background:white;border-radius:var(--radius);overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;min-height:510px}
 .team-photo{position:relative;display:block;overflow:hidden;color:inherit;text-decoration:none}.team-photo img{height:100%;object-fit:cover;transition:.6s ease}
@@ -201,7 +203,7 @@ em{font-family:var(--serif);font-weight:400}
 .team-info h3{font-size:34px;line-height:1.05;letter-spacing:-.04em;margin:14px 0 8px}
 .team-info p{margin:0;color:var(--ink-2);font-size:12px}
 
-.clinic-gallery{background:white;overflow:hidden}
+.clinic-gallery{background:var(--paper);overflow:hidden}
 .environment-shell{width:min(1380px,100%);margin:auto;display:grid;grid-template-columns:minmax(280px,.7fr) minmax(0,1.45fr);gap:clamp(54px,7vw,110px);align-items:center}
 .environment-copy{max-width:470px;align-self:center}
 .environment-copy h2{margin:18px 0 26px}
@@ -246,7 +248,7 @@ em{font-family:var(--serif);font-weight:400}
 .cta-inner p{max-width:650px;margin:28px auto;color:rgba(255,255,255,.64);line-height:1.8}
 .cta-inner .btn{margin-top:10px}
 
-.faq{background:#f7f8fb;display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw}
+.faq{background:var(--paper-soft);display:grid;grid-template-columns:.8fr 1.2fr;gap:8vw}
 .faq-head{position:sticky;top:130px;align-self:start}
 .faq-list{border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line);padding:0}
@@ -1261,4 +1263,61 @@ em{font-family:var(--serif);font-weight:400}
 @media (max-width:560px){
   .team-instagram-badge{left:14px;bottom:14px;max-width:calc(100% - 28px);padding:9px 11px;font-size:11px}
   .team-instagram-badge svg{width:17px;height:17px;flex-basis:17px}
+}
+
+/* =========================================================
+   SplitText — reveal premium por palavras
+   Adaptado para o projeto estático da Cuidar, sem React/GSAP.
+   ========================================================= */
+.split-parent{
+  --split-delay:55ms;
+  --split-duration:.9s;
+}
+.split-word-mask{
+  display:inline-block;
+  overflow:clip;
+  vertical-align:bottom;
+  padding-bottom:.08em;
+  margin-bottom:-.08em;
+}
+.split-word{
+  display:inline-block;
+  opacity:0;
+  transform:translate3d(0,.72em,0);
+  filter:blur(7px);
+  transform-origin:50% 100%;
+  transition:
+    opacity var(--split-duration) cubic-bezier(.16,1,.3,1),
+    transform var(--split-duration) cubic-bezier(.16,1,.3,1),
+    filter var(--split-duration) cubic-bezier(.16,1,.3,1);
+  transition-delay:calc(var(--split-index,0) * var(--split-delay));
+  will-change:transform,opacity,filter;
+}
+.split-parent.split-visible .split-word{
+  opacity:1;
+  transform:translate3d(0,0,0);
+  filter:blur(0);
+}
+.split-parent.split-complete .split-word{
+  will-change:auto;
+}
+
+/* No mobile, evita criar uma pilha de camadas filtradas no WebKit/Safari. */
+@media(max-width:1080px){
+  .split-word{
+    transform:translate3d(0,18px,0);
+    filter:none;
+  }
+  .split-parent.split-visible .split-word{
+    transform:translate3d(0,0,0);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .split-word{
+    opacity:1!important;
+    transform:none!important;
+    filter:none!important;
+    transition:none!important;
+  }
 }
