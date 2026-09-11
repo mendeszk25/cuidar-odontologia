@@ -3,6 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    (function(){
+      var ua=navigator.userAgent||'';
+      var platform=navigator.platform||'';
+      var touchMac=platform==='MacIntel'&&navigator.maxTouchPoints>1;
+      if(/iPad|iPhone|iPod/.test(ua)||touchMac){
+        document.documentElement.classList.add('ios-webkit');
+      }
+    })();
+  </script>
   <meta name="theme-color" content="#0b1530">
   <meta name="description" content="Cuidar Odontologia Integrada em Gravatá. Atendimento odontológico com cuidado, planejamento e profissionais especializados.">
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -27,8 +37,8 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/hero-profissional-sem-card.webp" type="image/webp">
   <title>Cuidar Odontologia | Odontologia Integrada em Gravatá</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="hero-reference.css?v=20260911-iosfix1">
+  <link rel="stylesheet" href="style.css?v=20260911-iosrootfix1">
+  <link rel="stylesheet" href="hero-reference.css?v=20260911-iosrootfix1">
   <script src="clinic.config.js"></script>
   <script src="script.js" defer></script>
   <script src="ghost-fibers.js" defer></script>

@@ -94,8 +94,20 @@ em{font-family:var(--serif);font-weight:400}
   color:white;padding:132px 5vw 54px;overflow:hidden;
 }
 .hero:after{
-  content:'';position:absolute;inset:0;pointer-events:none;opacity:.2;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.12;
+  /* Textura 100% CSS. Evita o feTurbulence que o WebKit/iOS pode
+     rasterizar como um tile preto sobre o hero. */
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.12) 0 .45px,transparent .65px),
+    radial-gradient(circle,rgba(137,183,255,.09) 0 .4px,transparent .6px);
+  background-size:9px 9px,13px 13px;
+  background-position:0 0,4px 6px;
+}
+
+/* iOS/Android mobile: a textura é decorativa e não precisa de uma camada
+   adicional de composição no topo do hero. */
+@media (max-width:1080px){
+  .hero:after{content:none;display:none;background:none;opacity:0}
 }
 .hero-grid{width:min(1380px,100%);min-height:calc(100svh - 220px);margin:auto;display:grid;grid-template-columns:1.03fr .97fr;align-items:center;gap:6vw;position:relative;z-index:2}
 .hero-copy{padding-top:20px}
@@ -1319,5 +1331,57 @@ em{font-family:var(--serif);font-weight:400}
     transform:none!important;
     filter:none!important;
     transition:none!important;
+  }
+}
+
+
+/* =========================================================
+   iOS WebKit — modo de composição estável do hero
+   Evita tiles pretos de GPU no Safari/WebView sem alterar Android.
+   ========================================================= */
+html.ios-webkit .hero,
+html.ios-webkit .hero *{
+  will-change:auto!important;
+}
+html.ios-webkit .hero .reveal,
+html.ios-webkit .hero .reveal.is-visible{
+  opacity:1!important;
+  transform:none!important;
+  transition:none!important;
+}
+html.ios-webkit .hero .split-word,
+html.ios-webkit .hero .split-parent.split-visible .split-word{
+  opacity:1!important;
+  transform:none!important;
+  -webkit-transform:none!important;
+  filter:none!important;
+  -webkit-filter:none!important;
+  transition:none!important;
+  will-change:auto!important;
+}
+html.ios-webkit .hero .split-word-mask{
+  overflow:visible!important;
+}
+@media (max-width:1080px){
+  html.ios-webkit .hero::before,
+  html.ios-webkit .hero::after,
+  html.ios-webkit .hero-glow,
+  html.ios-webkit .ghost-fibers-bg,
+  html.ios-webkit .ghost-fibers-canvas{
+    content:none!important;
+    display:none!important;
+    background:none!important;
+    filter:none!important;
+    -webkit-filter:none!important;
+    mix-blend-mode:normal!important;
+  }
+  html.ios-webkit .visual-frame::before{
+    display:none!important;
+    filter:none!important;
+    -webkit-filter:none!important;
+  }
+  html.ios-webkit .frame-caption{
+    -webkit-backdrop-filter:none!important;
+    backdrop-filter:none!important;
   }
 }
