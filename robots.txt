@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://cuidar-odontologia.vercel.app/sitemap.xml

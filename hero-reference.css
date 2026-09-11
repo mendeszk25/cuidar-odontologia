@@ -705,3 +705,75 @@
 @media (prefers-reduced-motion: reduce) {
   .ghost-fibers-bg { opacity: .22; }
 }
+
+/* =========================================================
+   Mobile compositor hard fallback — elimina o bloco preto
+   observado atrás da marca em navegadores móveis.
+
+   A origem é uma rasterização incorreta do cabeçalho fixed em
+   conjunto com camadas compostas do hero. Em telas pequenas o
+   cabeçalho não precisa ficar preso ao viewport, então usamos uma
+   composição simples e totalmente opaca/transparente, sem filtros.
+   ========================================================= */
+@media (max-width: 760px) {
+  .site-header {
+    position: absolute !important;
+    inset: 0 0 auto 0 !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    -webkit-filter: none !important;
+    filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    perspective: none !important;
+    will-change: auto !important;
+    contain: none !important;
+    isolation: auto !important;
+    transition: none !important;
+    background: transparent !important;
+  }
+
+  .site-header.scrolled {
+    padding-top: 12px !important;
+    background: transparent !important;
+  }
+
+  .site-header .nav-shell,
+  .site-header.scrolled .nav-shell {
+    background: transparent !important;
+    background-image: none !important;
+    border-color: transparent !important;
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-filter: none !important;
+    filter: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    will-change: auto !important;
+    contain: none !important;
+    isolation: auto !important;
+    transition: none !important;
+  }
+
+  .site-header .brand,
+  .site-header .brand-word,
+  .site-header .brand-sub,
+  .site-header .menu-toggle {
+    background: transparent !important;
+    background-image: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-filter: none !important;
+    filter: none !important;
+    -webkit-transform: none !important;
+    transform: none !important;
+    will-change: auto !important;
+  }
+
+  /* Mantém o botão do menu visível sem criar uma superfície com blur. */
+  .site-header .menu-toggle {
+    background: rgba(255,255,255,.10) !important;
+  }
+}

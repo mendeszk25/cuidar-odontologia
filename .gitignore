@@ -1,0 +1,24 @@
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+
+# Private keys / service credentials
+*.pem
+*.key
+*service-account*.json
+*serviceAccount*.json
+firebase-adminsdk-*.json
+credentials*.json
+.runtimeconfig.json
+
+# Local CLI state
+.firebase/
+firebase-debug.log*
+.vercel/
+supabase/.temp/
+
+# Logs and OS/editor noise
+*.log
+.DS_Store
+Thumbs.db

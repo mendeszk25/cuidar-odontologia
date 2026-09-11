@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-  Sitemap preparado para publicação.
-  Adicione URLs absolutas reais somente depois que o domínio oficial estiver definido.
-  Páginas públicas atuais: / e /politica-de-privacidade.html
--->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://cuidar-odontologia.vercel.app/</loc>
+  </url>
+  <url>
+    <loc>https://cuidar-odontologia.vercel.app/politica-de-privacidade.html</loc>
+  </url>
 </urlset>

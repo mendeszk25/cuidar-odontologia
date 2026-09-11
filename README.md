@@ -72,14 +72,14 @@ As informações profissionais, registros, endereço, horário e canais de conta
 
 ## Deploy
 
-Por ser estático, o projeto pode ser publicado em serviços como Vercel, Netlify, Firebase Hosting, GitHub Pages ou outro servidor compatível com arquivos HTML/CSS/JS.
+Por ser estático, o projeto pode ser publicado em serviços como Vercel, Netlify, Firebase Hosting, GitHub Pages ou outro servidor compatível com arquivos HTML/CSS/JS. A configuração atual usa a URL `https://cuidar-odontologia.vercel.app/` nos metadados públicos, no sitemap e no robots.
 
-Quando o domínio oficial estiver definido:
+Se o domínio de produção mudar:
 
-1. adicione `canonical` e `og:url` com a URL real;
-2. use URLs absolutas para as imagens sociais;
-3. preencha `sitemap.xml` apenas com URLs públicas reais;
-4. adicione a linha `Sitemap: https://dominio-real/sitemap.xml` ao `robots.txt`;
+1. atualize `canonical` e `og:url` com a nova URL;
+2. atualize as URLs absolutas das imagens sociais;
+3. atualize as URLs em `sitemap.xml`;
+4. atualize a linha `Sitemap:` em `robots.txt`;
 5. confira o compartilhamento Open Graph e Twitter Card após o deploy.
 
 ## Responsividade
@@ -97,3 +97,30 @@ O formulário não envia dados para um backend próprio. Ele monta uma mensagem 
 ## Autor
 
 Desenvolvido por [@mendeszk__](https://www.instagram.com/mendeszk__/).
+
+## Backend e infraestrutura
+
+A versão atual do projeto **não utiliza backend próprio**. O site é composto apenas por HTML, CSS e JavaScript estáticos. O formulário de contato valida os dados no navegador, monta a mensagem e abre o WhatsApp; nenhum dado do formulário é persistido pelo projeto.
+
+### Firebase
+
+Firebase não é necessário para as funcionalidades atuais. Caso a clínica escolha Firebase Hosting no futuro, ele deve ser tratado apenas como uma alternativa de hospedagem até existir um requisito real para Firestore, Authentication, Storage ou Cloud Functions.
+
+### Supabase
+
+Supabase não é necessário para as funcionalidades atuais. Não existem tabelas, Auth, Storage, Edge Functions, migrations ou variáveis Supabase neste projeto. Não adicione `service_role` ou qualquer segredo de servidor ao frontend.
+
+### Hospedagem atual e segurança
+
+Os metadados públicos do site usam `https://cuidar-odontologia.vercel.app/` como URL canônica. O arquivo `vercel.json` adiciona headers de segurança compatíveis com o site estático sem introduzir backend ou alterar o layout.
+
+O repositório também possui `.gitignore` para impedir o versionamento acidental de arquivos `.env`, credenciais privadas, chaves e estados locais das CLIs.
+
+Nenhuma variável de ambiente é necessária para executar a versão atual.
+
+Se o domínio de produção mudar, atualize em conjunto:
+
+- `canonical` e `og:url` em `index.html`;
+- URLs de imagens Open Graph/Twitter;
+- `sitemap.xml`;
+- linha `Sitemap:` em `robots.txt`.

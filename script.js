@@ -137,8 +137,12 @@
       const treatment = String(data.get("treatment") || "").trim();
       const message = String(data.get("message") || "").trim();
       const phoneDigits = phone.replace(/\D/g, "");
+      const localPhoneDigits = phoneDigits.startsWith("55") && [12, 13].includes(phoneDigits.length)
+        ? phoneDigits.slice(2)
+        : phoneDigits;
+      const hasOnlyPhoneCharacters = /^[+\d\s().-]+$/.test(phone);
 
-      if (phoneDigits.length < 10) {
+      if (!hasOnlyPhoneCharacters || ![10, 11].includes(localPhoneDigits.length)) {
         const phoneInput = $("input[name='phone']", form);
         phoneInput?.setCustomValidity("Informe um número de WhatsApp válido com DDD.");
         phoneInput?.reportValidity();
